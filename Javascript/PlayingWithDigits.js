@@ -39,8 +39,6 @@ const digPow = (n, p) => {
   }
 }
 
-
-
 console.log(digPow(46288, 1));
 
 
