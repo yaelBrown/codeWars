@@ -20,7 +20,7 @@ def solution(l):
 
   out = ""
 
-  out += l[idx]
+  out += str(l[idx])
 
   while idx != (len(l) - 1):
     indexVal = l[idx]
@@ -31,18 +31,23 @@ def solution(l):
     else:
       consecutive = False
       out += "-"
-      out += nextInt
+      out += str(nextInt)
 
       # something like this
     
     if consecutive == False:
       out += ","
-      out = nextInt
+      out = str(nextInt)
+
+    idx += 1
+
+
+  return out
 
     
 
 
 
-# print(solution([-6, -3, -2, -1, 0, 1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20]))
+print(solution([-6, -3, -2, -1, 0, 1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20]))
 
-print("asdf"[-1])
+# print("asdf"[-1])
