@@ -20,21 +20,77 @@ result = solution("apples, pears # and bananas\ngrapes\nbananas !apples", ["#", 
 """
 
 def solution(string, markers):
-  out = string
-  
+  lines = string.split("\n")
+
+  linesIdx = 0
   for m in markers:
-    idx = string.index(m)
-    out = out[:idx]
+    for l in lines:
+      if m in l:
+        idx = l.index(m)
+        lines[linesIdx] = l[:idx]
+        linesIdx += 1
+      else:
+        lines[linesIdx] = l
+        linesIdx += 1
+    linesIdx = 0
+    idx = 0
 
-  return out
+  temp = ""
+  for l in lines:
+    temp += l.strip()
+    temp += "\n"
+
+  return temp[:-1]
 
 
-aa = "this is a # string"
 
-# print(aa.index("#"))
+# try:
+#   aa.index("#")
+# except ValueError:
+#   print("There was a value error")
+# else:
+#   print("Else block was ran")
+
+
+# print(aa.index("!"))
 # print(aa[10:])
+
+# Replace item in list
+# lizt = [1,2,3,4,5]
+# lizt[1] = 1
+# print(lizt)
+
 
 
 print(solution("apples, pears # and bananas\ngrapes\nbananas !apples", ["#", "!"]))
 
 # check for new line character
+
+
+
+"""
+This took 2 days.
+
+def solution(string,markers):
+    parts = string.split('\n')
+    for s in markers:
+        parts = [v.split(s)[0].rstrip() for v in parts]
+    return '\n'.join(parts)
+
+from re import split, escape
+
+
+def solution(string, markers):
+    if markers:
+        pattern = "[" + escape("".join(markers)) + "]"
+    else:
+        pattern = ''
+    return '\n'.join(split(pattern, line)[0].rstrip() for line in string.splitlines())
+
+
+def solution(string,markers):
+    parts = string.split('\n')
+    for s in markers:
+        parts = [v.split(s)[0].rstrip() for v in parts]
+    return '\n'.join(parts)
+"""
