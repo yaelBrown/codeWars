@@ -5,17 +5,23 @@ Note: a and b are not ordered!
 '''
 
 def get_sum(a,b):
-  if a < 0:
-    return 0 + b
-  elif b < 0:
-    return 0 + a
-  else:
-    if a == b:
-      return a
-    else:
-      return a + b
 
-# print(get_sum(-1,2))
+  def sumHelper(a,b):
+    summ = 0
+    nums = []
+
+    nums = list(range(a,b+1))
+    for n in nums:
+      summ += n
+    return summ
+
+  if a > b:
+    return sumHelper(b,a)
+  else:
+    return sumHelper(a,b)
+
+
+print(get_sum(-1,2))
 
 
 '''
@@ -25,14 +31,14 @@ def get_sum(a,b):
     return sum(xrange(min(a,b), max(a,b)+1))
 '''
 
-n = [1,2,3,4,5,6,7,8,9]
-print(sum(n)) #45
+# n = [1,2,3,4,5,6,7,8,9]
+# print(sum(n)) #45
 # print(range(1,10))
 
 # for i in range(10):
 #   print(i)
 
-print(sum(2,10)) # int object is not iterable
+# print(sum(2,10)) # int object is not iterable
 # range() creates a iterable object
 
 
@@ -43,4 +49,13 @@ xrange() - This function returns the generator object that can be used to displa
 - If you want to write code that will run on both Python 2 and Python 3, use range() as the xrange funtion is deprecated in Python 3
 - range() is faster if iterating over the same sequence multiple times.
 - xrange() has to reconstruct the integer object every time, but range() will have real integer objects. (It will always perform worse in terms of memory however)
+
+def get_sum(a,b):
+    return sum(xrange(min(a,b), max(a,b)+1))
+
+def get_sum(a,b):
+    return sum(range(min(a, b), max(a, b) + 1))
+
+def get_sum(a, b):
+    return (a + b) * (abs(a - b) + 1) // 2
 '''
